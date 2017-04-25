@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+    <html>
+      <head>
+          <?!=HtmlService.createHtmlOutputFromFile("appsLocal/src/aktpj/htmlScript").getContent();?>
+          <?!=HtmlService.createHtmlOutputFromFile("appsLocal/src/aktpj/htmlStyle").getContent();?>     
+          <b>クレームボタン</b> 
+     </head>    
+    <body>
+        <form name="main" id="fastClm">
+            <br>入替クレームがあった機械のボタンを押して下さい<br>
+            チッパー
+            <input type= "button" name="code" value="" size="10" maxlength="10"><br>
+            機械　名称
+            <input type= "text" name="mgth" value="" size="10" maxlength="10"><br>
+            性能　名称
+            <input type= "text" name="abil" value="" size="10" maxlength="10"><br>
+            型式　名称
+            <input type= "text" name="model" value="" size="10" maxlength="10"><br>
+            製造　番号
+            <input type= "text" name="serial" value="" size="10" maxlength="10"><br>
+            
+            <button type= "button" name="btn" value="Create" size="10" onclick="dataAdd(this.parentNode)" id="add">機械登録</button>
+        </form><br>
+        <P>ステータスとファイル状況</P><br>
+        <div id="List"></div><br>
+            <div id="tablenotcomp"></div>
+            <div id="tablecomplete"></div>  
+        
+    </body>
+</html>
