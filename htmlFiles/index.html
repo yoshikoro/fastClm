@@ -2,36 +2,39 @@
 <meta charset="UTF-8">
     <html>
       <head>
-          <?!=HtmlService.createHtmlOutputFromFile("appsLocal/src/aktpj/htmlScript").getContent();?>
-          <?!=HtmlService.createHtmlOutputFromFile("appsLocal/src/aktpj/htmlStyle").getContent();?>     
+          <?!=HtmlService.createHtmlOutputFromFile("htmlFiles/htmlScript").getContent();?>
+          <?!=HtmlService.createHtmlOutputFromFile("htmlFiles//htmlStyle").getContent();?>     
           <b>クレームボタン</b> 
      </head>    
     <body>
-        <form name="main" id="fastClm">
-            <br>入替クレームがあった機械のボタンを押して下さい<br>
-            チッパー
-            <input type= "button" name="lgf" value="" size="10" maxlength="10"><br>
-            機械　名称
-            <input type= "button" name="ldh" value="" size="10" maxlength="10"><br>
-            ハンマードリル
-            <input type= "text" name="lbc" value="" size="10" maxlength="10"><br>
-            4P中間コード
-            <input type= "text" name="zbc4" value="" size="10" maxlength="10"><br>
-            中間コード
-            <input type= "text" name="zbc" value="" size="10" maxlength="10"><br>
-            インナー各種
-            <button type= "button" name="hax" value="Create" size="10" onclick="dataAdd(this.parentNode)" id="add">機械登録</button>
-            電工ドラム
-            <button type= "button" name="zba" value="Create" size="10" onclick="dataAdd(this.parentNode)" id="add">機械登録</button>
-            ジャックコネクタ
-            <button type= "button" name="zzg" value="Create" size="10" onclick="dataAdd(this.parentNode)" id="add">機械登録</button>
-            ジャックホース各種
-            <button type= "button" name="zac" value="Create" size="10" onclick="dataAdd(this.parentNode)" id="add">機械登録</button>
-        </form><br>
-        <P>ステータスとファイル状況</P><br>
+        <P>クリック状況</P><br>
         <div id="List"></div><br>
             <div id="tablenotcomp"></div>
-            <div id="tablecomplete"></div>  
+            <div id="tablecomplete"></div>
+
+
+        <form name="main" id="fastClm">
+            <br>入替クレームがあった機械のボタンを押して下さい<br>
+            
+            <button type= "button" name="lgf" value="" size="10" >チッパー</button><br>
+            
+            <button type= "button" name="ldh" value="" size="10" >ハンマードリル</button><br>
+        
+            <button type= "button" name="lbc" value="" size="10" >ブレーカ</button><br>
+        
+            <button type= "button" name="zbc4" value="" size="10" >4P中間コード</button><br>
+          
+            <button type= "button" name="zbc" value="" size="10" >中間コード</button><br>
+            
+            <button type= "button" name="hax" value="" size="10" >インナー</button>
+            
+            <button type= "button" name="zba" value="" size="10" >電工ドラム</button>
+            
+            <button type= "button" name="zzg" value="" size="10" >ジャックコネクタ</button>
+            
+            <button type= "button" name="zac" value="" size="10" >ジャックホース各種</button>
+        </form><br>
+          
         
     </body>
 </html>
