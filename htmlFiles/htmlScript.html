@@ -5,7 +5,7 @@
   elements.forEach(function(val) {
     //alert(val.value);
     val.addEventListener("click",function(){
-      google.script.run.withSuccessHandler(insertJson).collectedClmData(val.value)
+      google.script.run.withSuccessHandler(insertJson).collectedClmData(val.innerText)
     })
   }, false);
   //google.script.run.withSuccessHandler(insertJson).mvFile("FilesNameArray",2);
@@ -43,9 +43,13 @@ function tablefunc(dataArray) {
               content = content + "</tr></thead><tbody>";
             } 
             continue;
-          }  
+          }
+          if(j == 0){
           content = content + "<th scope='row'><b>" + dataArray[i][j] + "</b></th>";
+        }else{
+        content = content + "<td><b>" + dataArray[i][j] + "</b></td>";
         }
+       }
       content = content + "</tr>"
     }
   content = header + content + "</tbody></table><body>";      
