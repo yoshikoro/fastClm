@@ -1,20 +1,12 @@
 <script>
   window.addEventListener("load",function(){
-  document.getElementById("machinedata").style.display = "none";
-  google.script.run.withSuccessHandler(insertJson).mvFile("FilesNameArray",2);
+  var elements = document.getElementsByName("items")
+  elements.forEach(function(val) {
+    Logger.log(val);
+  }, this);
+  //google.script.run.withSuccessHandler(insertJson).mvFile("FilesNameArray",2);
   },false);
   //document.getElementById("search").addEventListener("click",(function(){})))
-
-/**
- * データベースより照合します
- *@pram{obj} parentNode フォームオブジェクト 
- *@return{void}
- */  
-function SendForm(parentNode){
-    document.getElementById("search").style.display = "none";
-    var mgrn = parentNode.mgrn.value;
-    google.script.run.withSuccessHandler(success).mydatabese(mgrn.toUpperCase());
-} 
 
 /**
  * コールバック関数
