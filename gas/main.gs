@@ -1,5 +1,5 @@
 function doGet(e) {
-  var html = HtmlService.createTemplateFromFile("appsLocal/src/aktpj/index").evaluate();
+  var html = HtmlService.createTemplateFromFile("htmlFiles/index").evaluate();
   return html;
   }
 

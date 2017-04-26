@@ -2,8 +2,9 @@
   window.addEventListener("load",function(){
   var elements = document.getElementsByName("items")
   elements.forEach(function(val) {
-    Logger.log(val);
-  }, this);
+    //alert(val.value);
+    val.addEventListener("click",function(){})
+  }, false);
   //google.script.run.withSuccessHandler(insertJson).mvFile("FilesNameArray",2);
   },false);
   //document.getElementById("search").addEventListener("click",(function(){})))
