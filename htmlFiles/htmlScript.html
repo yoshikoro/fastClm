@@ -1,17 +1,14 @@
 <script>
   window.addEventListener("load",function(){
-  google.script.run.withSuccessHandler(insertJson).returnData();
-  var elements = document.getElementsByName("items");
-  elements.forEach(function(val) {
-    //alert(val.value);
-    val.addEventListener("click",function(){
+    google.script.run.withSuccessHandler(insertJson).returnData();
+    var elements = document.getElementsByName("items");
+    elements.forEach(function(val) {
+      val.addEventListener("click",function(){
       google.script.run.withSuccessHandler(insertJson).collectedClmData(val.innerText)
-    })
-  }, false);
-  //google.script.run.withSuccessHandler(insertJson).mvFile("FilesNameArray",2);
+      })
+    }, false);
   },false);
-  //document.getElementById("search").addEventListener("click",(function(){})))
-
+  
 /**
  * 配列をテーブル形式に挿入する関数
  * @pram{String[][]} strArray テーブル化する配列 
@@ -19,9 +16,9 @@
 */  
 
 function insertJson(strArray){
- var json = JSON.parse(strArray);
- var content = tablefunc(json);
- document.getElementById("tablecomplete").innerHTML = content;
+  var json = JSON.parse(strArray);
+  var content = tablefunc(json);
+  document.getElementById("tablecomplete").innerHTML = content;
 }
 
 /**
@@ -32,7 +29,7 @@ function insertJson(strArray){
  */
 
 function tablefunc(dataArray) {
-   var header = "<b>フォルダ内の状況<b><br>"
+   var header = "<b>入力状況<b><br>"
    var content = "<table class='type08'><thead>"
     for(var i = 0;i < dataArray.length;i++){
       content = content + "<tr>";
