@@ -1,62 +1,16 @@
 <script>
   window.addEventListener("load",function(){
-  var elements = document.getElementsByName("items")
+  google.script.run.withSuccessHandler(insertJson).returnData();
+  var elements = document.getElementsByName("items");
   elements.forEach(function(val) {
     //alert(val.value);
-    val.addEventListener("click",function(){})
+    val.addEventListener("click",function(){
+      google.script.run.withSuccessHandler(insertJson).collectedClmData(val.value)
+    })
   }, false);
   //google.script.run.withSuccessHandler(insertJson).mvFile("FilesNameArray",2);
   },false);
   //document.getElementById("search").addEventListener("click",(function(){})))
-
-/**
- * コールバック関数
- *@pram{String} mgrn 管理番号 
- *@return{void} 
- */  
-function success(mgrn){
-  var json = JSON.parse(mgrn);
-  if(json.auth == "nodata"){
-    document.getElementById("machinedata").style.display = "block";
-    document.getElementById("List").innerHTML = "ファイルがありませんフォームにデータを入力して下さい" 
-  }else{
-    var gas = JSON.stringify(json);
-    document.getElementById("List").innerHTML = json.auth
-    google.script.run.withSuccessHandler((function(res){
-      document.main.btn.style.display = "block";
-      document.main.mgrn.value = "";
-      document.getElementById("List").innerHTML = res
-      google.script.run.withSuccessHandler(insertJson).mvFile("FilesNameArray",2);
-    })).inspectionSheetEdit(gas);
-  }
-}
-
-/**
- *フォームデータを登録する関数 
- * @pram{obj} formObj フォームオブジェクト
- * @return{void}
- * 
-*/
-function dataAdd(formObj){
-  var senddata = [];
-  senddata.push(document.main.mgrn.value.toUpperCase());
-  senddata.push(formObj.code.value.toUpperCase());
-  senddata.push(formObj.mgth.value);
-  senddata.push(formObj.abil.value);
-  senddata.push(formObj.model.value);
-  senddata.push("");
-  senddata.push("");
-  senddata.push("");
-  senddata.push(formObj.serial.value);
-  var json = JSON.stringify(senddata);
-  google.script.run.withSuccessHandler((function(){
-  document.input.btn.style.display = "none";
-  document.getElementById("List").innerHTML = "登録が完了しました<br>作成ボタンを押して下さい";
-  document.getElementById("search").style.display = "block";
-  document.getElementById("machinedata").style.display = "none";
-  })()
-  ).sheetDataAdd(json);
-}
 
 /**
  * 配列をテーブル形式に挿入する関数
@@ -78,17 +32,22 @@ function insertJson(strArray){
  */
 
 function tablefunc(dataArray) {
- var header = "<b>フォルダ内の状況<b><br>"
- var content = "<table class='type08'><thead><tr>"
-              + "<th>管理番号</th><th>アクセス用ＵＲＬ</th>"
-              + "</tr></thead><tbody>";  
-  for(var i = 0;i < dataArray.length;i++){
-    content = content + "<tr>";
-      for(var j = 0;j < dataArray[i].length;j++){
-        content = content + "<th scope='row'><b>" + dataArray[i][j] + "</b></th>";
-      }
-    content = content + "</tr>";
-  }
+   var header = "<b>フォルダ内の状況<b><br>"
+   var content = "<table class='type08'><thead>"
+    for(var i = 0;i < dataArray.length;i++){
+      content = content + "<tr>";
+        for(var j = 0;j < dataArray[i].length;j++){
+          if(i == 0){
+            content = content + "<th>" + dataArray[i][j] + "</th>";
+            if(j == dataArray[i].length - 1){
+              content = content + "</tr></thead><tbody>";
+            } 
+            continue;
+          }  
+          content = content + "<th scope='row'><b>" + dataArray[i][j] + "</b></th>";
+        }
+      content = content + "</tr>"
+    }
   content = header + content + "</tbody></table><body>";      
   return content
 }
